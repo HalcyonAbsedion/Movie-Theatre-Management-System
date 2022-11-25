@@ -71,20 +71,20 @@ public class LinkedList<T> {
         }
         return false;
     }
-    public boolean searchAndDelete(T data) {
+    public T searchAndDelete(T data) {
         if (!isEmpty()) {
-            Node<T> current = first, previous = null;
+            Node<T> current = first, previous = first;
             while (current != null) {
                 if (current.data.equals(data)) {
                     previous.next = current.next;
                     size--;
-                    return true;
+                    return current.data;
                 }
                 previous = current;
                 current = current.next;
             }
         }
-        return false;
+        return null;
     }
     public void display(){
         if(!isEmpty()){

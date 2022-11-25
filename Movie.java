@@ -1,7 +1,18 @@
 public class Movie {
     private String name;
     private double duration,standardTicketPrice,premiumTicketPrice;
-    private boolean $3deffects;
+    private boolean $3D_Effects;
+
+
+    public Movie(String name,double duration, double standardTicketPrice,double premiumTicketPrice,boolean $3D_Effects){
+        this.name=name;
+        this.duration=duration;
+        this.standardTicketPrice=standardTicketPrice;
+        this.premiumTicketPrice=premiumTicketPrice;
+        this.$3D_Effects=$3D_Effects;
+    }
+
+    public Movie(String name){this.name=name;}
 
     public String getName() {
         return name;
@@ -35,11 +46,15 @@ public class Movie {
         this.premiumTicketPrice = premiumTicketPrice;
     }
 
-    public boolean is$3deffects() {
-        return $3deffects;
+    public boolean is3D_Effects() {
+        return $3D_Effects;
     }
 
-    public void set$3deffects(boolean $3deffects) {
-        this.$3deffects = $3deffects;
+    public void set3D_Effects(boolean $3D_Effects) {
+        this.$3D_Effects = $3D_Effects;
+    }
+
+    public String toString(){
+        return "["+this.name+"]\t";
     }
 }
