@@ -7,16 +7,16 @@ public class Test {
         LinkedList<Movie> l= new LinkedList<Movie>();
 
         l.insertAtBack(m2);
-        l.insertAtFront(m3);
-        l.insertAtBack(m1);
+        l.insertAtFront(m1);
+        l.insertAtBack(m3);
         System.out.println("Test insertAtBack insertAtFront and display functions:");
         l.display();
         System.out.println("");
         System.out.println("isEmpty: "+ l.isEmpty());
 
-        System.out.println("Test deleteFromFront: "+l.deleteFromBack());
+        System.out.println("Test deleteFromFront: "+l.deleteFromFront());
 
-        System.out.println("Test deleteFromBack "+ l.deleteFromFront());
+        System.out.println("Test deleteFromBack "+ l.deleteFromBack());
 
         System.out.println("Test size: "+ l.getSize());
 
