@@ -17,5 +17,6 @@ public class Test {
         System.out.println(t1.reserveSeat('A',1)+"$");
         t1.displaySeats();
         System.out.println(t1.reserveSeat('A',1)+"$");
+        System.out.println(t1.reserveSeat('D',1)+"$");
     }
 }
