@@ -9,26 +9,13 @@ public class Test {
         l.insertAtBack(m2);
         l.insertAtFront(m1);
         l.insertAtBack(m3);
-        System.out.println("Test insertAtBack insertAtFront and display functions:");
-        l.display();
-        System.out.println("");
-        System.out.println("isEmpty: "+ l.isEmpty());
-
-        System.out.println("Test deleteFromFront: "+l.deleteFromFront());
-
-        System.out.println("Test deleteFromBack "+ l.deleteFromBack());
-
-        System.out.println("Test size: "+ l.getSize());
-
-        System.out.println("Test search: "+ l.search(m2));
-
-        System.out.println("Test movie getters: "+ m2.getName()+" "+m2.getDuration()+" "+m2.getPremiumTicketPrice()+" "+m2.getStandardTicketPrice()+" "+m2.is3D_Effects());
-        m2.setName("MOVIE");m2.setDuration(4);m2.setPremiumTicketPrice(3);m2.setStandardTicketPrice(2);m2.set3D_Effects(true);
-        System.out.println("Test movie setters: "+ m2.getName()+" "+m2.getDuration()+" "+m2.getPremiumTicketPrice()+" "+m2.getStandardTicketPrice()+" "+m2.is3D_Effects());
-
-        System.out.println("Test search and delete: "+ l.searchAndDelete(m2));
-
-        System.out.println("isEmpty: "+ l.isEmpty());
-        l.display();
+        m2.setStandardTicketPrice(10);
+        m2.setPremiumTicketPrice(15);
+        Theatre t1=new Theatre(5,20,3);
+        t1.currentMovie=m2;
+        t1.displaySeats();
+        System.out.println(t1.reserveSeat('A',1)+"$");
+        t1.displaySeats();
+        System.out.println(t1.reserveSeat('A',1)+"$");
     }
 }
