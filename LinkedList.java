@@ -73,11 +73,16 @@ public class LinkedList<T> {
     }
     public T searchAndDelete(T data) {
         if (!isEmpty()) {
-            Node<T> current = first, previous = first;
+            Node<T> current = first, previous = null;
             while (current != null) {
                 if (current.data.equals(data)) {
-                    previous.next = current.next;
-                    size--;
+                    if(previous==null){
+                        first=null;
+                    }
+                    else {
+                        previous.next = current.next;
+                        size--;
+                    }
                     return current.data;
                 }
                 previous = current;

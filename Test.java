@@ -29,5 +29,6 @@ public class Test {
         System.out.println("Test search and delete: "+ l.searchAndDelete(m2));
 
         System.out.println("isEmpty: "+ l.isEmpty());
+        l.display();
     }
 }
