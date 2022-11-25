@@ -1,5 +1,6 @@
 public class LinkedList<T> {
     private Node<T> first;
+    private int size=0;
     public boolean isEmpty(){
         return first==null;
     }
@@ -15,6 +16,7 @@ public class LinkedList<T> {
             }
             current.next=n;
         }
+        size++;
     }
     public void insertAtFront(T data){
         Node<T> n=new Node(data);
@@ -24,6 +26,7 @@ public class LinkedList<T> {
             n.next=first;
             first=n;
         }
+        size++;
     }
     public T deleteFromFront(){
         if(isEmpty()){
@@ -32,6 +35,7 @@ public class LinkedList<T> {
         else{
             T data= first.data;
             first=first.next;
+            size--;
             return data;
         }
     }
@@ -42,15 +46,17 @@ public class LinkedList<T> {
         else if(first.next==null){
             T data= first.data;
             first=null;
+            size--;
             return data;
         }
-        else{
-            Node<T> current=first;
-            while(current.next.next!=null){
-                current=current.next;
+        else {
+            Node<T> current = first;
+            while (current.next.next != null) {
+                current = current.next;
             }
-            T data=current.next.data;
-            current.next=null;
+            T data = current.next.data;
+            current.next = null;
+            size--;
             return data;
         }
     }
@@ -71,6 +77,7 @@ public class LinkedList<T> {
             while (current != null) {
                 if (current.data.equals(data)) {
                     previous.next = current.next;
+                    size--;
                     return true;
                 }
                 previous = current;
@@ -78,5 +85,17 @@ public class LinkedList<T> {
             }
         }
         return false;
+    }
+    public void display(){
+        if(!isEmpty()){
+            Node<T> current = first;
+            while (current != null) {
+                System.out.print(current.data);
+                current = current.next;
+            }
+        }
+    }
+    public int getSize(){
+        return size;
     }
 }
