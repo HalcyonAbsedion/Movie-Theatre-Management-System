@@ -7,6 +7,9 @@ public class Main {
         int week=0;
         while(1==1){
             for(int day=0;day<7;day++){
+                System.out.println("Start of New Day");
+                timeDisplay(week,day);
+
                 for(double hour=0;hour<8;hour+=0.5){
                     timeDisplay(week,day,hour);
                     System.out.println("1.Admin");
@@ -50,5 +53,9 @@ public class Main {
         if(hour-(int)hour!=0)
             timeHours=(int)hour+2+":30";
         System.out.println("Week "+(week+1)+", "+weekDays[day]+", "+timeHours+"pm");
+    }
+    public static void timeDisplay(int week,int day){
+        String[] weekDays={"Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"};
+        System.out.println("Week "+(week+1)+", "+weekDays[day]);
     }
 }

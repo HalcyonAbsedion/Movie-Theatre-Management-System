@@ -1,7 +1,7 @@
 public class CircularLinkedList<T>{
-    Node<T> head;
-    Node<T> tail;
-    int count;
+    private Node<T> head;
+    private Node<T> tail;
+    private int count;
     public boolean isEmpty() {
         return head==null;
     }
