@@ -78,6 +78,7 @@ public class LinkedList<T> {
                 if (current.data.equals(data)) {
                     if(previous==null){
                         first=null;
+                        size--;
                     }
                     else {
                         previous.next = current.next;
