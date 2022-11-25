@@ -20,6 +20,8 @@ public class Theatre {
         seats=new int[rows][columns];
     }
     public void displaySeats(){
+        System.out.println();
+        System.out.println("VIP ROWS: ["+Character.toUpperCase(rowLabels.charAt(vipRows))+",...,"+Character.toUpperCase(rowLabels.charAt(seats.length-1))+"]");
         System.out.print(" |");
         for(int j=0;j<seats[0].length;j++){
             if(j+1<10)
