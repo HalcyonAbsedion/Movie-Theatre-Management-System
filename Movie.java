@@ -55,6 +55,6 @@ public class Movie {
     }
 
     public String toString(){
-        return "["+this.name+"]\t";
+        return "["+this.name+"]";
     }
 }

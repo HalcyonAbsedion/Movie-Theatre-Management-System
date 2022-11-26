@@ -7,36 +7,40 @@ public class Test {
         Movie m4=new Movie("Movie");
         LinkedList<Movie> l= new LinkedList<Movie>();
         CircularLinkedList<Movie> cl= new CircularLinkedList<Movie>();
-        cl.insertAtFront(m2);
-        cl.insertAtBack(m1);
-        cl.insertAtFront(m3);
-        cl.display();
-        System.out.println("size:"+cl.search(m3));
-        System.out.println("search:"+cl.size());
-        cl.removeFromFront();
-        cl.display();
 
-        cl.removeFromBack();
-        cl.display();
 
-        System.out.println("search:"+cl.search(m2));
+        Movie movies1[]={m1,m2,m3};
+        Movie movies2[]={m2,m4,m3};
+        Movie movies3[]={m1,m4};
+        TheatreManagement Theatres[]={createTheatre("Theater1",movies1),createTheatre("theatre2",movies2),createTheatre("theatre3",movies3)};
 
-        cl.searchAndDelete(m2);
+        for(int i=0;i<Theatres.length;i++){
+            Theatres[i].displayMoviesOfTheatre();
+            System.out.println();
+        }
 
-        cl.display();
 
-//
+
 //        l.insertAtBack(m2);
 //        l.insertAtFront(m1);
 //        l.insertAtBack(m3);
 //        m2.setStandardTicketPrice(10);
 //        m2.setPremiumTicketPrice(15);
-//        Theatre t1=new Theatre(5,20,3);
+//        TheatrePlan t1=new TheatrePlan(5,20,3);
 //        t1.currentMovie=m2;
 //        t1.displaySeats();
 //        System.out.println(t1.reserveSeat('A',1)+"$");
 //        t1.displaySeats();
 //        System.out.println(t1.reserveSeat('A',1)+"$");
 //        System.out.println(t1.reserveSeat('D',1)+"$");
+    }
+    public static TheatreManagement createTheatre(String name,Movie[] movies){
+        Queue<TheatrePlan> TheatreQ = new Queue<TheatrePlan>();
+        for(int i=0;i<movies.length;i++) {
+            TheatreQ.enqueue(new TheatrePlan(movies[i]));
+
+        }
+        TheatreManagement theatre = new TheatreManagement(name,TheatreQ);
+        return theatre;
     }
 }

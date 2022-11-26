@@ -19,6 +19,15 @@ public class TheatrePlan {
         this.vipRows=vipRows;
         seats=new int[rows][columns];
     }
+    public TheatrePlan(int rows, int columns, int vipRows, Movie m) {
+        this(rows,columns,vipRows);
+        this.currentMovie=m;
+    }
+
+    public TheatrePlan(Movie m){
+        this(10,10,7,m);
+    }
+
     public void displaySeats(){
         System.out.println();
         System.out.println("VIP ROWS: ["+Character.toUpperCase(rowLabels.charAt(vipRows))+",...,"+Character.toUpperCase(rowLabels.charAt(seats.length-1))+"]");
@@ -73,5 +82,9 @@ public class TheatrePlan {
             System.out.println("Seat Already Reserved!");
         }
         return price;
+    }
+
+    public String toString(){
+        return "[hosting the movie \""+currentMovie+"\"]";
     }
 }
