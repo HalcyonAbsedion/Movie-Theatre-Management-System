@@ -1,33 +1,17 @@
 public class TheatrePlan {
     private int seats[][],vipRows;
     private final String rowLabels="abcdefghijklmnopqrstuvwxyz";
-    Movie currentMovie;
+    private Movie currentMovie;
+    private double time;
     public TheatrePlan(int rows, int columns, int vipRows) {
-        if(rows>26||rows<0) {
-            System.out.println("Invalid Row Number!");
-            return;
-        }
-        if(columns<0||columns>99) {
-            System.out.println("Invalid Column Number!");
-            return;
-        }
-        if(vipRows>rows||vipRows<0) {
-            this.vipRows=0;
-            System.out.println("Invalid VIP Row Position!");
-            return;
-        }
         this.vipRows=vipRows;
         seats=new int[rows][columns];
     }
-    public TheatrePlan(int rows, int columns, int vipRows, Movie m) {
+    public TheatrePlan(int rows, int columns, int vipRows, Movie m,double time) {
         this(rows,columns,vipRows);
         this.currentMovie=m;
+        this.time=time;
     }
-
-    public TheatrePlan(Movie m){
-        this(10,10,7,m);
-    }
-
     public void displaySeats(){
         System.out.println();
         System.out.println("VIP ROWS: ["+Character.toUpperCase(rowLabels.charAt(vipRows))+",...,"+Character.toUpperCase(rowLabels.charAt(seats.length-1))+"]");
@@ -85,6 +69,6 @@ public class TheatrePlan {
     }
 
     public String toString(){
-        return "[hosting the movie \""+currentMovie+"\"]";
+        return "\t--"+currentMovie+" on "+Main.timeDisplay(time)+"--\t";
     }
 }

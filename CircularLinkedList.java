@@ -1,5 +1,5 @@
 public class CircularLinkedList<T>{
-    private Node<T> head;
+    public Node<T> head;
     private Node<T> tail;
     private int count;
     public boolean isEmpty() {
@@ -39,10 +39,10 @@ public class CircularLinkedList<T>{
     public void display() {
         if(!isEmpty()) {
             Node<T> current=head;
-            System.out.print(current.data+" ");
+            System.out.print(current.data+"\t");
             current=current.next;
             while(current!=head) {
-                System.out.print(current.data+" ");
+                System.out.print(current.data+"\t");
                 current=current.next;
             }
             System.out.println();
@@ -126,5 +126,4 @@ public class CircularLinkedList<T>{
         }
         return null;
     }
-
 }

@@ -1,52 +1,43 @@
-public class TheatreManagement {
+public class TheatreManagement extends Queue<TheatrePlan> {
+    double totalTime=0;
+    double time;
+    private int rows,columns,vipRows;
 
-    //a movie for TheatreManagement (or Theatre ) is a TheatrePlan (or a Seat&PriceOrganization)
-
-    String nameOfTheatre;
-    int theatresCount=0;
-    Queue<TheatrePlan> theatre;
-
-    public TheatreManagement(String n){
-        nameOfTheatre=n;
-        theatresCount++;
+    public TheatreManagement(int rows, int columns, int vipRows) {
+        if(rows>26||rows<0) {
+            System.out.println("Invalid Row Number!");
+            return;
+        }
+        if(columns<0||columns>99) {
+            System.out.println("Invalid Column Number!");
+            return;
+        }
+        if(vipRows>rows||vipRows<0) {
+            this.vipRows=0;
+            System.out.println("Invalid VIP Row Position!");
+            return;
+        }
+        this.rows = rows;
+        this.columns = columns;
+        this.vipRows = vipRows;
     }
 
-    public TheatreManagement(String n,Queue<TheatrePlan> t){
-        nameOfTheatre=n;
-        theatresCount++;
-        this.theatre=t;
+    public boolean addMovie(Movie m){
+        if(totalTime+m.getDuration()<=8){
+            totalTime+=m.getDuration();
+            enqueue(new TheatrePlan(rows,columns,vipRows,m,time));
+            return true;
+        }
+        return false;
     }
-
-    public int getTheatresCount(){
-        return theatresCount;
+    public boolean removeMovieAtFront(){
+        if(!isEmpty()){
+            dequeue();
+            return true;
+        }
+        return false;
     }
-
-    public void addMovieToTheatre(TheatrePlan m){
-        theatre.enqueue(m);
+    public void displayMovies(){
+        display();
     }
-
-    public TheatrePlan removeMovieFromFrontOfTheatre(){
-        return theatre.dequeue();
-    }
-
-    public TheatrePlan PeekMovieFromFrontOfTheatre(){
-        return theatre.getFront();
-    }
-
-    public TheatrePlan searchAndRemoveFromTheatre(TheatrePlan m){
-        return theatre.searchAndDelete(m);
-    }
-
-    public boolean searchMovieInTheatre(TheatrePlan m){
-        return theatre.search(m);
-    }
-
-    public void displayMoviesOfTheatre(){
-        System.out.print(nameOfTheatre+"{");
-        theatre.display();
-        System.out.print("}");
-    }
-
-
-
 }

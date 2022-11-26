@@ -53,8 +53,17 @@ public class Movie {
     public void set3D_Effects(boolean $3D_Effects) {
         this.$3D_Effects = $3D_Effects;
     }
-
+    public String durationString(){
+        String s=(int)duration+"hr";
+        if(duration-(int)duration==0){
+            return s;
+        }
+        return s+","+(int)((duration-(int)duration)*60)+"min";
+    }
     public String toString(){
-        return "["+this.name+"]";
+        return this.name+" ("+durationString()+")";
+    }
+    public void displayMoviePrice(){
+        System.out.print(this+" standard ticket("+this.getStandardTicketPrice()+"$), "+" VIP ticket("+this.getPremiumTicketPrice()+"$)");
     }
 }
