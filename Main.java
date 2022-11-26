@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args){
         Scanner sc=new Scanner(System.in);
-        Theatre t1=new Theatre(10,10,7);
+        TheatrePlan t1=new TheatrePlan(10,10,7);
         int week=0;
         while(1==1){
             for(int day=0;day<7;day++){
@@ -43,7 +43,7 @@ public class Main {
             }
         }
     }
-    public static void mainMenu(int week,int day,int hour,Theatre[] theatres,LinkedList<Movie> movies){
+    public static void mainMenu(int week, int day, int hour, TheatrePlan[] theatres, LinkedList<Movie> movies){
 
 
     }

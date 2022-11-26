@@ -1,8 +1,8 @@
-public class Theatre {
+public class TheatrePlan {
     private int seats[][],vipRows;
     private final String rowLabels="abcdefghijklmnopqrstuvwxyz";
     Movie currentMovie;
-    public Theatre(int rows,int columns,int vipRows) {
+    public TheatrePlan(int rows, int columns, int vipRows) {
         if(rows>26||rows<0) {
             System.out.println("Invalid Row Number!");
             return;
