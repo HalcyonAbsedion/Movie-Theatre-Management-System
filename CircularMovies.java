@@ -5,8 +5,8 @@ public class CircularMovies extends CircularLinkedList<Movie>{
     public void addMovie(Movie m){
         insertAtBack(m);
     }
-    public void removeMovie(Movie m){
-        searchAndDelete(m);
+    public Movie removeMovie(Movie m){
+        return searchAndDelete(m);
     }
     public void displayWithPrices(){
         if(!isEmpty()) {
