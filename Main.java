@@ -3,10 +3,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args){
         Scanner sc=new Scanner(System.in);
-        TheatreManagement[] theatres=new TheatreManagement[3];
-        theatres[0]=new TheatreManagement(5,5,4);
-        theatres[1]=new TheatreManagement(5,5,4);
-        theatres[2]=new TheatreManagement(5,5,4);
+
         Movie m1=new Movie("Spider-Man: No Way Home",2.5,20,30,false);
         Movie m2=new Movie("The Matrix: Ressurrections",2.5,18,25,false);
         Movie m3=new Movie("Bullet Train",2,20,30,false);
@@ -22,6 +19,10 @@ public class Main {
         int input;
         while(1==1){
             for(int day=0;day<7;day++){
+                TheatreManagement[] theatres=new TheatreManagement[3];
+                theatres[0]=new TheatreManagement(5,5,4);
+                theatres[1]=new TheatreManagement(5,5,4);
+                theatres[2]=new TheatreManagement(5,5,4);
                 System.out.println("\"Start of New Day\"");
                 timeDisplay(week,day);
                 System.out.println("Welcome Admin");
