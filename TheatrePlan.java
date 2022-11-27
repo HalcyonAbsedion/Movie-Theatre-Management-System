@@ -71,4 +71,8 @@ public class TheatrePlan {
     public String toString(){
         return "\t--"+currentMovie+" on "+Main.timeDisplay(time)+"--\t";
     }
+
+    public Movie getCurrentMovie() {
+        return currentMovie;
+    }
 }

@@ -46,5 +46,21 @@ public class CircularMovies extends CircularLinkedList<Movie>{
             current=current.next;
         }
     }
-
+    public Movie getMovieIndex(int x){
+        if(!isEmpty()) {
+            int i=1;
+            Node<Movie> current=head;
+            if(x==i)
+                return current.data;
+            i++;
+            current=current.next;
+            while(current!=head) {
+                if(x==i)
+                    return current.data;
+                i++;
+                current=current.next;
+            }
+        }
+        return null;
+    }
 }

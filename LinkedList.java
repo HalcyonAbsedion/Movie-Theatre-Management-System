@@ -1,5 +1,5 @@
 public class LinkedList<T> {
-    private Node<T> first;
+    public Node<T> first;
     private int size=0;
     public boolean isEmpty(){
         return first==null;

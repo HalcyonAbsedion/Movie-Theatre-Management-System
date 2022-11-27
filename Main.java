@@ -7,9 +7,9 @@ public class Main {
         theatres[0]=new TheatreManagement(5,5,4);
         theatres[1]=new TheatreManagement(5,5,4);
         theatres[2]=new TheatreManagement(5,5,4);
-        Movie m1=new Movie("Movie1",2.5,20,30,false);
-        Movie m2=new Movie("Movie2",1.5,20,30,false);
-        Movie m3=new Movie("Movie3",2.5,20,30,false);
+        Movie m1=new Movie("Movie1",2,20,30,false);
+        Movie m2=new Movie("Movie2",1,20,30,false);
+        Movie m3=new Movie("Movie3",2,20,30,false);
         Movie m4=new Movie("Movie4",2,20,30,false);
         CircularMovies movies=new CircularMovies();
         movies.addMovie(m1);
@@ -164,8 +164,19 @@ public class Main {
                                         continue;
                                     }
                                     else{
-                                        Movie movie=movies.getMovie(input);
+                                        Movie movie=movies.getMovieIndex(input);
+                                        System.out.println(movie);
+                                        while(true){
+                                            System.out.println("Choose Time:");
+                                            System.out.println();
+                                            int instances=displaySchedule(theatres,movie);
+                                            System.out.println();
+                                            input=sc.nextInt();
+                                            if(input>0&&input<=instances){
 
+                                            }
+                                            break;
+                                        }
                                     }
                                 }
                                 else if (input==2) {
@@ -223,16 +234,18 @@ public class Main {
     public static void displaySchedule(TheatreManagement[] theatres){
         for(int i=0;i<theatres.length;i++){
             System.out.println("Theatre "+(i+1)+":");
-            theatres[i].display();
+            theatres[i].displayMovies();
             System.out.println();
         }
     }
-    public static void displaySchedule(TheatreManagement[] theatres,Movie m){
+    public static int displaySchedule(TheatreManagement[] theatres,Movie m){
+        int sum=0;
         for(int i=0;i<theatres.length;i++){
-            System.out.println("Theatre "+(i+1)+":");
-            theatres[i].display();
+            System.out.println((i+1)+". Theatre "+(i+1)+":");
+            sum+=theatres[i].displayMovies(m);
             System.out.println();
         }
+        return sum;
     }
     public static void timeDisplay(int week,int day,double hour){
         String[] weekDays={"Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"};

@@ -40,4 +40,18 @@ public class TheatreManagement extends Queue<TheatrePlan> {
     public void displayMovies(){
         display();
     }
+    public int displayMovies(Movie M){
+        int x=0;
+        if(!isEmpty()){
+            Node<TheatrePlan> current = first;
+            while (current != null) {
+                if(current.data.getCurrentMovie()==M){
+                    System.out.print(current.data);
+                    x++;
+                }
+                current = current.next;
+            }
+        }
+        return x;
+    }
 }
