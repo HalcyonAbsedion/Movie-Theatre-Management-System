@@ -40,6 +40,7 @@ public class Main {
                             System.out.println("3.Stop Editing");
                             input=sc.nextInt();
                             if(input==1){
+                                //Auto Generate
                                 Node<Movie> current = movies.head;
                                 boolean[] schedule=new boolean[theatres.length];
                                 for(int i=0;!scheduleIsFull(schedule);i++){
@@ -52,6 +53,7 @@ public class Main {
                                 }
                             }
                             else if(input==2){
+                                // Manual edit
                                 System.out.println("Choose Theatre to edit plan (press -1 to stop editing):");
                                 for(int i=0;i<theatres.length;i++){
                                     System.out.println("Theatre "+(i+1));
@@ -59,11 +61,12 @@ public class Main {
                                 input=sc.nextInt();
                                 System.out.println();
                                 if(input==-1){
+                                    //exit edit
                                     break;
                                 }
                                 else{
+                                    //edit chosen theatre
                                     while(true){
-//                                        not done yet
                                         System.out.println("Editing Theatre "+(input)+":");
                                         System.out.println("1.Add Movie");
                                         System.out.println("2.Remove Movie");
@@ -71,6 +74,7 @@ public class Main {
                                         System.out.println("4.Back to Editing Menu");
                                         int input2=sc.nextInt();
                                         if(input2==1){
+                                            //add movie to the chosen theatre hall
                                             System.out.println("Choose a movie to add");
                                             movies.displayAsList();
                                             input2=sc.nextInt();
@@ -81,12 +85,19 @@ public class Main {
                                                 System.out.println("Error, theatre "+(input)+" schedule full!");
                                         }
                                         else if (input2==2){
+                                            //remove movie from theatre hall
                                             theatres[input-1].displayMovies();
-//  Not Done
+                                            System.out.println("Enter index:");
+                                            int index=sc.nextInt();
+                                            TheatrePlan theatrePlan=theatres[input-1].getMoviePlanByIndex(index);
+                                            theatres[input-1].searchAndDelete(theatrePlan);
+                                            theatres[input-1].displayMovies();
                                         }
                                         else if (input2==3) {
+                                            //displays the movies that the theatre chosen is hosting
                                             theatres[input-1].displayMovies();
                                         } else if(input2==4){
+                                            //go back to editing menue
                                             break;
                                         }
                                         else{
@@ -97,14 +108,17 @@ public class Main {
                                 }
                             }
                             else if (input==3) {
+//                                Exit edit Today's Schedule
                                 break;
                             }
                         }
                     }
                     else if(input==2){
+//                        View Todays Schedule
                         displaySchedule(theatres);
                     }
                     else if(input==3){
+//                        Edit Movies
                         while(true) {
                             System.out.println("Editing Movies:");
                             System.out.println("1.Add Movie");
@@ -113,6 +127,7 @@ public class Main {
                             System.out.println("4.Back to Menu");
                             input=sc.nextInt();
                             if(input==1){
+//                                Add Movie
                                 System.out.println("Enter Movie Name:");
                                 String name=sc.next();
                                 System.out.println("Enter duration of the movie:");
@@ -128,6 +143,7 @@ public class Main {
                                 movies.addMovie(newMovie);
                             }
                             else if (input==2){
+//                                Remove Movie
                                 System.out.println("Choose Movie to Delete:");
                                 movies.displayAsList();
                                 input=sc.nextInt();
@@ -135,9 +151,11 @@ public class Main {
                                 movies.removeMovie(movies.getMovieByIndex(input));
                             }
                             else if (input==3){
+//                                Display Movies
                                 movies.display();
                             }
                             else if(input==4){
+//                                Back to Menu
                                 break;
                             }
                             else{
@@ -147,11 +165,14 @@ public class Main {
                         }
                     }
                     else if(input==4){
+//                        View Movies
                         movies.display();
                     }
                     else if(input==5)
+//                        Start Day
                         break;
                     else if(input==6) {
+//                        Exit (Terminate)
                         System.out.println("Shutting down the system...");
                         return;
                     }
@@ -160,6 +181,7 @@ public class Main {
                         continue;
                     }
                 }
+//                 start day goes here
                 for(double hour=0;hour<8;hour+=0.5){
                     while(true){
                         timeDisplay(week,day,hour);

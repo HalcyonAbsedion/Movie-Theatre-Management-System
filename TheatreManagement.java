@@ -30,6 +30,25 @@ public class TheatreManagement extends Queue<TheatrePlan> {
         }
         return false;
     }
+    public TheatrePlan getMoviePlanByIndex(int index){
+        Queue<TheatrePlan> temp=new Queue<TheatrePlan>();
+        TheatrePlan moviePlan=null;
+        int i=0;
+        if(!isEmpty()){
+            while(!isEmpty()){
+                TheatrePlan d=dequeue();
+                if(i==index){
+                    moviePlan=d;
+                }
+                i++;
+                temp.enqueue(d);
+            }
+            while(!temp.isEmpty()){
+                enqueue(temp.dequeue());
+            }
+        }
+        return moviePlan;
+    }
     public boolean removeMovieAtFront(){
         if(!isEmpty()){
             dequeue();

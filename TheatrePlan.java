@@ -1,16 +1,19 @@
 public class TheatrePlan {
     private int seats[][],vipRows;
     private final String rowLabels="abcdefghijklmnopqrstuvwxyz";
+    public int id=0;
     private Movie currentMovie;
     private double time;
     public TheatrePlan(int rows, int columns, int vipRows) {
         this.vipRows=vipRows;
         seats=new int[rows][columns];
+        id++;
     }
     public TheatrePlan(int rows, int columns, int vipRows, Movie m,double time) {
         this(rows,columns,vipRows);
         this.currentMovie=m;
         this.time=time;
+        id++;
     }
     public void displaySeats(){
         System.out.println();
