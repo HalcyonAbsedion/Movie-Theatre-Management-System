@@ -76,11 +76,13 @@ public class CircularLinkedList<T>{
             if(prev==null) {
                 x=head.data;
                 head = null;
+                tail=null;
                 count--;
             }
             else {
                 x=current.data;
                 prev.next=head;
+                tail=prev;
                 count--;
             }
         }
@@ -118,7 +120,12 @@ public class CircularLinkedList<T>{
                 previous = current;
                 current = current.next;
                 if (current.data.equals(data)) {
+                    if(current.next==head){
+                        removeFromBack();
+                    }
+                    else {
                         previous.next = current.next;
+                    }
                         count--;
                     return current.data;
                 }
