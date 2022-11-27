@@ -67,16 +67,26 @@ public class Main {
                                         System.out.println("Editing Theatre "+(input)+":");
                                         System.out.println("1.Add Movie");
                                         System.out.println("2.Remove Movie");
-                                        System.out.println("3.Back to Editing Menu");
+                                        System.out.println("3.Display Schedule");
+                                        System.out.println("4.Back to Editing Menu");
                                         int input2=sc.nextInt();
                                         if(input2==1){
                                             System.out.println("Choose a movie to add");
-
+                                            movies.displayAsList();
+                                            input2=sc.nextInt();
+                                            if(theatres[input-1].addMovie(movies.getMovieByIndex(input2))){
+                                                System.out.println("Successfully Added!");
+                                            }
+                                            else
+                                                System.out.println("Error, theatre "+(input)+" schedule full!");
                                         }
                                         else if (input2==2){
-
+                                            theatres[input-1].displayMovies();
+//  Not Done
                                         }
-                                        else if(input2==3){
+                                        else if (input2==3) {
+                                            theatres[input-1].displayMovies();
+                                        } else if(input2==4){
                                             break;
                                         }
                                         else{
