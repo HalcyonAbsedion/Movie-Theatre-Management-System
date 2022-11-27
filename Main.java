@@ -63,12 +63,14 @@ public class Main {
                                 }
                                 else{
                                     while(true){
+//                                        not done yet
                                         System.out.println("Editing Theatre "+(input)+":");
                                         System.out.println("1.Add Movie");
                                         System.out.println("2.Remove Movie");
                                         System.out.println("3.Back to Editing Menu");
                                         int input2=sc.nextInt();
                                         if(input2==1){
+                                            System.out.println("Choose a movie to add");
 
                                         }
                                         else if (input2==2){
@@ -101,10 +103,26 @@ public class Main {
                             System.out.println("4.Back to Menu");
                             input=sc.nextInt();
                             if(input==1){
+                                System.out.println("Enter Movie Name:");
+                                String name=sc.next();
+                                System.out.println("Enter duration of the movie:");
+                                double duration = sc.nextDouble();
+                                System.out.println("Enter standard ticket price: ");
+                                double standardTicketPrice=sc.nextDouble();
+                                System.out.println("Enter premium ticket price: ");
+                                double premiumTicketPrice=sc.nextDouble();
+                                System.out.println("Enter 3d effect (true/false): ");
+                                boolean $3D_Effects= sc.nextBoolean();
 
+                                Movie newMovie=new Movie(name,duration,standardTicketPrice,premiumTicketPrice,$3D_Effects);
+                                movies.addMovie(newMovie);
                             }
                             else if (input==2){
-
+                                System.out.println("Choose Movie to Delete:");
+                                movies.displayAsList();
+                                input=sc.nextInt();
+                                System.out.println();
+                                movies.removeMovie(movies.getMovieByIndex(input));
                             }
                             else if (input==3){
                                 movies.display();
@@ -164,7 +182,7 @@ public class Main {
                                         continue;
                                     }
                                     else{
-                                        Movie movie=movies.getMovieIndex(input);
+                                        Movie movie=movies.getMovieByIndex(input);
                                         System.out.println(movie);
                                         while(true){
                                             System.out.println("Choose Time:");

@@ -46,7 +46,7 @@ public class CircularMovies extends CircularLinkedList<Movie>{
             current=current.next;
         }
     }
-    public Movie getMovieIndex(int x){
+    public Movie getMovieByIndex(int x){
         if(!isEmpty()) {
             int i=1;
             Node<Movie> current=head;
