@@ -210,19 +210,6 @@ public class Main {
             }
         }
     }
-//    public static TheatreManagement createTheatre(String name,Movie[] movies){
-//        Queue<TheatrePlan> TheatreQ = new Queue<TheatrePlan>();
-//        for(int i=0;i<movies.length;i++) {
-//            TheatreQ.enqueue(new TheatrePlan(movies[i]));
-//
-//        }
-//        TheatreManagement theatre = new TheatreManagement(name,TheatreQ);
-//        return theatre;
-//    }
-//    public static void mainMenu(int week, int day, int hour, TheatrePlan[] theatres, LinkedList<Movie> movies){
-//
-//
-//    }
     public static boolean scheduleIsFull(boolean a[]){
         for (int i=0;i<a.length;i++){
             if(a[i]==false){
