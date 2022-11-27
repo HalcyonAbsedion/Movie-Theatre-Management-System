@@ -101,6 +101,17 @@ public class LinkedList<T> {
             }
         }
     }
+    public void display(T data){
+        if(!isEmpty()){
+            Node<T> current = first;
+            while (current != null) {
+                if(current.data==data){
+                    System.out.print(current.data);
+                }
+                current = current.next;
+            }
+        }
+    }
     public int getSize(){
         return size;
     }

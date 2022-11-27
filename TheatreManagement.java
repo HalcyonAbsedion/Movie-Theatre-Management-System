@@ -24,8 +24,8 @@ public class TheatreManagement extends Queue<TheatrePlan> {
 
     public boolean addMovie(Movie m){
         if(totalTime+m.getDuration()<=8){
+            enqueue(new TheatrePlan(rows,columns,vipRows,m,totalTime));
             totalTime+=m.getDuration();
-            enqueue(new TheatrePlan(rows,columns,vipRows,m,time));
             return true;
         }
         return false;
