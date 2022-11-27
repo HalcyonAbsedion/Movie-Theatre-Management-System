@@ -3,9 +3,15 @@ public class TheatrePlan {
     private final String rowLabels="abcdefghijklmnopqrstuvwxyz";
     public int id=0;
     private Movie currentMovie;
+
+    public double getTime() {
+        return time;
+    }
+
     private double time;
+
     public TheatrePlan(int rows, int columns, int vipRows) {
-        this.vipRows=vipRows;
+        this.vipRows=vipRows-1;
         seats=new int[rows][columns];
         id++;
     }

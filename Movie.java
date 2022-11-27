@@ -2,7 +2,7 @@ public class Movie {
     private String name;
     private double duration,standardTicketPrice,premiumTicketPrice;
     private boolean $3D_Effects;
-
+    public int instances=0;
 
     public Movie(String name,double duration, double standardTicketPrice,double premiumTicketPrice,boolean $3D_Effects){
         this.name=name;

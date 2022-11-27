@@ -7,15 +7,17 @@ public class Main {
         theatres[0]=new TheatreManagement(5,5,4);
         theatres[1]=new TheatreManagement(5,5,4);
         theatres[2]=new TheatreManagement(5,5,4);
-        Movie m1=new Movie("Movie1",2,20,30,false);
-        Movie m2=new Movie("Movie2",1,20,30,false);
-        Movie m3=new Movie("Movie3",2,20,30,false);
-        Movie m4=new Movie("Movie4",2,20,30,false);
+        Movie m1=new Movie("Spider-Man: No Way Home",2.5,20,30,false);
+        Movie m2=new Movie("The Matrix: Ressurrections",2.5,18,25,false);
+        Movie m3=new Movie("Bullet Train",2,20,30,false);
+        Movie m4=new Movie("Top Gun: Maverick",2,20,30,false);
+        Movie m5=new Movie("The Batman",3,22,31,false);
         CircularMovies movies=new CircularMovies();
         movies.addMovie(m1);
         movies.addMovie(m2);
         movies.addMovie(m3);
         movies.addMovie(m4);
+        movies.addMovie(m5);
         int week=0;
         int input;
         while(1==1){
@@ -183,7 +185,12 @@ public class Main {
                 }
 //                 start day goes here
                 for(double hour=0;hour<8;hour+=0.5){
-                    while(true){
+                    double price=0;
+                    TheatrePlan theatrePlan=null;
+                    int theatreNumber=0;
+                    char row=0;
+                    int col=0;
+                    while(price==0){
                         timeDisplay(week,day,hour);
                         System.out.println("1.View Movies list with prices");
                         System.out.println("2.Order Ticket");
@@ -198,8 +205,6 @@ public class Main {
                         }
                         else if(input==2) {
                             while(true){
-                                double price=0;
-                                TheatrePlan theatrePlan=null;
                                 System.out.println("1.Choose Movie");
                                 System.out.println("2.View Full Schedule");
                                 System.out.println("3.Confirm Purchase ("+price+"$)");
@@ -209,7 +214,7 @@ public class Main {
                                 if(input==1){
                                     movies.displayAsList();
                                     input=sc.nextInt();
-                                    if(input>movies.size()){
+                                    if(input>movies.size()||input<1){
                                         System.out.println("Invalid Option!");
                                         continue;
                                     }
@@ -219,13 +224,27 @@ public class Main {
                                         while(true){
                                             System.out.println("Choose Time:");
                                             System.out.println();
-                                            int instances=displaySchedule(theatres,movie);
+                                            TheatrePlan[][] instances=displaySchedule(theatres,movie);
                                             System.out.println();
                                             input=sc.nextInt();
-                                            if(input>0&&input<=instances){
-
+                                            theatreNumber=input;
+                                            if(input<1||input>instances.length){
+                                                System.out.println("Invalid Option!");
+                                                continue;
                                             }
-                                            break;
+                                            else{
+                                                System.out.println("Choose Seat:");
+                                                theatrePlan=instances[input-1][0];
+                                                theatrePlan.displaySeats();
+                                                System.out.println("Enter Row(A,B...):");
+                                                row=sc.next().charAt(0);
+                                                System.out.println("Enter Column(1,2...):");
+                                                col=sc.nextInt();
+                                                price=theatrePlan.reserveSeat(row,col);
+                                                theatrePlan.displaySeats();
+                                                if(price>0)
+                                                    break;
+                                            }
                                         }
                                     }
                                 }
@@ -233,9 +252,23 @@ public class Main {
                                     displaySchedule(theatres);
                                 }
                                 else if(input==3){
-
+                                    System.out.println("_________________________________________________");
+                                    System.out.println("_________________________________________________");
+                                    System.out.println("Ticket");
+                                    System.out.println("_________________________________________________");
+                                    timeDisplay(week,day,hour);
+                                    System.out.println("_________________________________________________");
+                                    System.out.println("Theatre number: "+theatreNumber);
+                                    System.out.println(theatrePlan);
+                                    timeDisplay(theatrePlan.getTime());
+                                    System.out.println("Seat: "+row+col);
+                                    System.out.println("Total Price: "+price+"$");
+                                    System.out.println("_________________________________________________");
+                                    System.out.println("_________________________________________________");
+                                    break;
                                 }
                                 else if(input==4){
+                                    price=0;
                                     break;
                                 }
                                 else{
@@ -275,14 +308,21 @@ public class Main {
             System.out.println();
         }
     }
-    public static int displaySchedule(TheatreManagement[] theatres,Movie m){
+
+    public static TheatrePlan[][] displaySchedule(TheatreManagement[] theatres,Movie m){
+        TheatrePlan[][] theatrePlans = new TheatrePlan[m.instances][];
+        int j=0;
         int sum=0;
-        for(int i=0;i<theatres.length;i++){
+        for(int i=0;i<theatres.length&&sum<m.instances&&j<m.instances;i++){
             System.out.println((i+1)+". Theatre "+(i+1)+":");
-            sum+=theatres[i].displayMovies(m);
+            theatrePlans[j]=theatres[i].returnAndDisplayTheatrePlan(m);
+            sum+=theatrePlans[j].length;
             System.out.println();
+            if(theatrePlans[j].length>0){
+                j++;
+            }
         }
-        return sum;
+        return theatrePlans;
     }
     public static void timeDisplay(int week,int day,double hour){
         String[] weekDays={"Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"};

@@ -26,6 +26,7 @@ public class TheatreManagement extends Queue<TheatrePlan> {
         if(totalTime+m.getDuration()<=8){
             enqueue(new TheatrePlan(rows,columns,vipRows,m,totalTime));
             totalTime+=m.getDuration();
+            m.instances++;
             return true;
         }
         return false;
@@ -60,17 +61,36 @@ public class TheatreManagement extends Queue<TheatrePlan> {
         display();
     }
     public int displayMovies(Movie M){
+        return 0;
+    }
+    public TheatrePlan[] returnAndDisplayTheatrePlan(Movie m){
         int x=0;
+        TheatrePlan[] theatrePlans = new TheatrePlan[0];
         if(!isEmpty()){
             Node<TheatrePlan> current = first;
             while (current != null) {
-                if(current.data.getCurrentMovie()==M){
-                    System.out.print(current.data);
-                    x++;
+                if(current.data.getCurrentMovie()==m){
+                    if(current.data!=null){
+                        System.out.print(current.data);
+                        x++;
+                    }
+                }
+                current = current.next;
+            }
+            theatrePlans=new TheatrePlan[x];
+            current = first;
+            int i=0;
+            while(current!=null) {
+                if(current.data.getCurrentMovie()==m){
+                    theatrePlans[i]=current.data;
+                    i++;
                 }
                 current = current.next;
             }
         }
-        return x;
+        return theatrePlans;
+    }
+    public boolean search(TheatrePlan t){
+        return search(t);
     }
 }

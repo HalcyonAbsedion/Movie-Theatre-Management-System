@@ -23,5 +23,7 @@ public class Queue<T> extends LinkedList<T>{
             }
             return null;
         }
-
+        public boolean search(T data){
+            return search(data);
+        }
 }
