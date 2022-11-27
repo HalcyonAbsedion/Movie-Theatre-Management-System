@@ -77,9 +77,7 @@ public class TheatreManagement extends Queue<TheatrePlan> {
     public void displayMovies(){
         display();
     }
-    public int displayMovies(Movie M){
-        return 0;
-    }
+
     public TheatrePlan[] returnAndDisplayTheatrePlan(Movie m){
         int x=0;
         TheatrePlan[] theatrePlans = new TheatrePlan[0];
