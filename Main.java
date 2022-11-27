@@ -88,10 +88,10 @@ public class Main {
                                         }
                                         else if (input2==2){
                                             //remove movie from theatre hall
-                                            theatres[input-1].displayMovies();
-                                            System.out.println("Enter index:");
+                                            theatres[input-1].printMoviesList();
+                                            System.out.println("Choose a movie to remove:");
                                             int index=sc.nextInt();
-                                            TheatrePlan theatrePlan=theatres[input-1].getMoviePlanByIndex(index);
+                                            TheatrePlan theatrePlan=theatres[input-1].getMoviePlanByIndex(index-1);
                                             theatres[input-1].searchAndDelete(theatrePlan);
                                             theatres[input-1].displayMovies();
                                         }

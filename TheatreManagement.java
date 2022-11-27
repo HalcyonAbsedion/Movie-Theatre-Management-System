@@ -57,6 +57,23 @@ public class TheatreManagement extends Queue<TheatrePlan> {
         }
         return false;
     }
+    public void printMoviesList(){
+        Queue<TheatrePlan> temp=new Queue<TheatrePlan>();
+        int i=1;
+        if(!isEmpty()){
+            while(!isEmpty()){
+                TheatrePlan t=dequeue();
+                temp.enqueue(t);
+                System.out.println(i+". "+t);
+                i++;
+            }
+            while(!temp.isEmpty()){
+                enqueue(temp.dequeue());
+            }
+
+        }
+
+    }
     public void displayMovies(){
         display();
     }

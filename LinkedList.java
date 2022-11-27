@@ -77,7 +77,7 @@ public class LinkedList<T> {
             while (current != null) {
                 if (current.data.equals(data)) {
                     if(previous==null){
-                        first=null;
+                        deleteFromFront();
                         size--;
                     }
                     else {
