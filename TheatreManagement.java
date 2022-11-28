@@ -1,6 +1,5 @@
 public class TheatreManagement extends Queue<TheatrePlan> {
     double totalTime=0;
-    double time;
     private int rows,columns,vipRows;
 
     public TheatreManagement(int rows, int columns, int vipRows) {

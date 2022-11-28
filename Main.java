@@ -184,8 +184,9 @@ public class Main {
                         continue;
                     }
                 }
+                boolean flag=false;
 //                 start day goes here
-                for(double hour=0;hour<8;hour+=0.5){
+                for(double hour=0;hour<8&&!flag;hour+=0.5){
                     double price=0;
                     TheatrePlan theatrePlan=null;
                     int theatreNumber=0;
@@ -278,11 +279,12 @@ public class Main {
                                 }
                             }
                         }
-                        else if(input==3) {
+                        else if(input==4) {
                             System.out.println("Shutting down the system...");
                             return;
                         }
-                        else if(input==4){
+                        else if(input==3){
+                            flag=true;
                             break;
                         }
                         else{
