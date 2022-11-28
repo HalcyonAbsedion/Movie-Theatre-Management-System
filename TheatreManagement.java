@@ -77,7 +77,7 @@ public class TheatreManagement extends Queue<TheatrePlan> {
         display();
     }
 
-    public TheatrePlan[] returnAndDisplayTheatrePlan(Movie m){
+    public TheatrePlan[] returnTheatrePlan(Movie m){
         int x=0;
         TheatrePlan[] theatrePlans = new TheatrePlan[0];
         if(!isEmpty()){
@@ -85,7 +85,6 @@ public class TheatreManagement extends Queue<TheatrePlan> {
             while (current != null) {
                 if(current.data.getCurrentMovie()==m){
                     if(current.data!=null){
-                        System.out.print(current.data);
                         x++;
                     }
                 }

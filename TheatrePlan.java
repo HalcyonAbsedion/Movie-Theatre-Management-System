@@ -1,6 +1,7 @@
 public class TheatrePlan {
     private int seats[][],vipRows;
     private final String rowLabels="abcdefghijklmnopqrstuvwxyz";
+    public double price=0;
     private double time;
     private Movie currentMovie;
 
@@ -74,6 +75,7 @@ public class TheatrePlan {
         else {
             System.out.println("Seat Already Reserved!");
         }
+        this.price=price;
         return price;
     }
 

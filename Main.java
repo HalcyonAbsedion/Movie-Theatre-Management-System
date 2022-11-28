@@ -188,6 +188,8 @@ public class Main {
 //                 start day goes here
                 for(double hour=0;hour<8&&!flag;hour+=0.5){
                     double price=0;
+                    Queue<TheatrePlan> theatrePlanQueue=new Queue<TheatrePlan>();
+                    Queue<String> theatreNumberQueue=new Queue<String>();
                     TheatrePlan theatrePlan=null;
                     int theatreNumber=0;
                     char row=0;
@@ -235,6 +237,7 @@ public class Main {
                                                 continue;
                                             }
                                             else{
+                                                theatreNumberQueue.enqueue(theatreNumber+"");
                                                 System.out.println("Choose Seat:");
                                                 theatrePlan=instances[input-1][0];
                                                 theatrePlan.displaySeats();
@@ -242,8 +245,9 @@ public class Main {
                                                 row=sc.next().charAt(0);
                                                 System.out.println("Enter Column(1,2...):");
                                                 col=sc.nextInt();
-                                                price=theatrePlan.reserveSeat(row,col);
+                                                price+=theatrePlan.reserveSeat(row,col);
                                                 theatrePlan.displaySeats();
+                                                theatrePlanQueue.enqueue(theatrePlan);
                                                 if(price>0)
                                                     break;
                                             }
@@ -254,19 +258,23 @@ public class Main {
                                     displaySchedule(theatres);
                                 }
                                 else if(input==3){
-                                    System.out.println("_________________________________________________");
-                                    System.out.println("_________________________________________________");
-                                    System.out.println("Ticket");
-                                    System.out.println("_________________________________________________");
-                                    timeDisplay(week,day,hour);
-                                    System.out.println("_________________________________________________");
-                                    System.out.println("Theatre number: "+theatreNumber);
-                                    System.out.println(theatrePlan);
-                                    timeDisplay(theatrePlan.getTime());
-                                    System.out.println("Seat: "+row+col);
-                                    System.out.println("Total Price: "+price+"$");
-                                    System.out.println("_________________________________________________");
-                                    System.out.println("_________________________________________________");
+                                    while(!theatrePlanQueue.isEmpty()){
+                                        System.out.println("_________________________________________________");
+                                        System.out.println("_________________________________________________");
+                                        System.out.println("Ticket");
+                                        System.out.println("_________________________________________________");
+                                        timeDisplay(week,day,hour);
+                                        System.out.println("_________________________________________________");
+                                        String s=theatreNumberQueue.dequeue();
+                                        System.out.println("Theatre number: "+s);
+                                        theatrePlan=theatrePlanQueue.dequeue();
+                                        System.out.println(theatrePlan);
+                                        timeDisplay(theatrePlan.getTime());
+                                        System.out.println("Seat: "+(""+row).toUpperCase()+col);
+                                        System.out.println("Total Price: "+theatrePlan.price+"$");
+                                        System.out.println("_________________________________________________");
+                                        System.out.println("_________________________________________________");
+                                    }
                                     break;
                                 }
                                 else if(input==4){
@@ -312,16 +320,22 @@ public class Main {
         }
     }
 
-    public static TheatrePlan[][] displaySchedule(TheatreManagement[] theatres,Movie m){
+    public Main() {
+    }
+
+    public static TheatrePlan[][] displaySchedule(TheatreManagement[] theatres, Movie m){
         TheatrePlan[][] theatrePlans = new TheatrePlan[m.instances][];
         int j=0;
         int sum=0;
         for(int i=0;i<theatres.length&&sum<m.instances&&j<m.instances;i++){
-            System.out.println((i+1)+". Theatre "+(i+1)+":");
-            theatrePlans[j]=theatres[i].returnAndDisplayTheatrePlan(m);
-            sum+=theatrePlans[j].length;
+            TheatrePlan[] temp=theatres[i].returnTheatrePlan(m);
+
+            sum+=temp.length;
             System.out.println();
-            if(theatrePlans[j].length>0){
+            if(temp.length!=0){
+                System.out.println((j+1)+". Theatre "+(i+1)+":");
+                System.out.println(temp[0]);
+                theatrePlans[j]=temp;
                 j++;
             }
         }
